@@ -10,7 +10,7 @@ const Holdings = () => {
   const fetchHoldings = async () => {
     const user = JSON.parse(localStorage.getItem("user"));
     if (!user) return;
-    const res = await axios.get(`http://localhost:2020/allHoldings/${user._id}`);
+    const res = await axios.get(`https://herodha-backend.onrender.com/allHoldings/${user._id}`);
     setAllHoldings(res.data);
   };
 
@@ -19,7 +19,7 @@ const Holdings = () => {
 
     const symbols = allHoldings.map(h => h.symbol);
 
-    const res = await axios.post("http://localhost:2020/api/prices", {
+    const res = await axios.post("https://herodha-backend.onrender.com/api/prices", {
       symbols
     });
 

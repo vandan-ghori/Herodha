@@ -6,13 +6,13 @@ const Orders = () => {
 
   const fetchOrders = async () => {
     const user = JSON.parse(localStorage.getItem("user"));
-    const res = await axios.get(`http://localhost:2020/allOrders/${user._id}`);
+    const res = await axios.get(`https://herodha-backend.onrender.com/allOrders/${user._id}`);
     setAllOrders(res.data);
   };
 
   const executeOrder = async (id) => {
     try {
-      await axios.post(`http://localhost:2020/executeOrder/${id}`);
+      await axios.post(`https://herodha-backend.onrender.com/executeOrder/${id}`);
       fetchOrders(); 
     } catch (err) {
       console.error(err);

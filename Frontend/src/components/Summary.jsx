@@ -25,7 +25,7 @@ const Summary = () => {
   const fetchFunds = async () => {
     try {
       const user = JSON.parse(localStorage.getItem("user")); 
-      const res = await axios.get(`http://localhost:2020/funds/${user._id}`);
+      const res = await axios.get(`https://herodha-backend.onrender.com/funds/${user._id}`);
       setFunds(res.data);
     } catch (err) {
       console.error("Funds fetch failed");
@@ -40,7 +40,7 @@ const Summary = () => {
 
   const fetchHoldings = async () => {
     try {
-      const res = await axios.get("http://localhost:2020/allHoldings");
+      const res = await axios.get("https://herodha-backend.onrender.com/allHoldings");
       setAllHoldings(res.data);
     } catch (err) {
       console.error("Holdings fetch failed", err);
@@ -53,7 +53,7 @@ const Summary = () => {
     try {
       const symbols = allHoldings.map((s) => s.symbol);
 
-      const res = await axios.post("http://localhost:2020/api/prices", {
+      const res = await axios.post("https://herodha-backend.onrender.com/api/prices", {
         symbols,
       });
 

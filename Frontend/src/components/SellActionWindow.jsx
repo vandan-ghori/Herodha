@@ -14,7 +14,7 @@ const SellActionWindow = ({uid,symbol, price}) => {
     const user = JSON.parse(localStorage.getItem("user"));
 
     const handleSellClick = () => {
-        axios.post("http://localhost:2020/newOrder", {
+        axios.post("https://herodha-backend.onrender.com/newOrder", {
         userId: user._id,
         name: uid,
         symbol,

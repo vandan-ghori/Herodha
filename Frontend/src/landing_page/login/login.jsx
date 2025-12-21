@@ -25,14 +25,14 @@ const Login = () => {
 
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:2020/login", {
+      const res = await axios.post("https://herodha-backend.onrender.com/login", {
         username,
         password,
       });
 
       if (res.status === 200) {
-        login(res.data);       // ✅ FIXED
-        navigate("/summary"); // ✅ redirect
+        login(res.data);    
+        navigate("/summary");
       }
     } catch (err) {
       setError(err.response?.data?.message || "Invalid username or password");

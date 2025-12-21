@@ -15,7 +15,7 @@ const Funds = () => {
       if (!user) return;
 
       const res = await axios.get(
-        `http://localhost:2020/funds/${user._id}`
+        `https://herodha-backend.onrender.com/funds/${user._id}`
       );
 
       setFunds(res.data);

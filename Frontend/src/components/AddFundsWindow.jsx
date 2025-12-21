@@ -25,7 +25,7 @@ const AddFundsWindow = () => {
       }
 
       await axios.post(
-        `http://localhost:2020/funds/add/${user._id}`,
+        `https://herodha-backend.onrender.com/funds/add/${user._id}`,
         { amount: Number(amount) }
       );
 

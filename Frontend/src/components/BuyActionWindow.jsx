@@ -10,7 +10,7 @@ const BuyActionWindow = ({ uid, symbol, price }) => {
   const user = JSON.parse(localStorage.getItem("user"));
 
   const handleBuyClick = async () => {
-    await axios.post("http://localhost:2020/newOrder", {
+    await axios.post("https://herodha-backend.onrender.com/newOrder", {
       userId: user._id,
       name: uid,
       symbol,

@@ -8,7 +8,7 @@ const TopBar = () => {
 
   const fetchIndices = async() => {
     try {
-      const res = await axios.get("http://localhost:2020/api/indices");
+      const res = await axios.get("https://herodha-backend.onrender.com/api/indices");
       setIndices(res.data);
     } catch (err) {
       console.error("Index fetch failed");

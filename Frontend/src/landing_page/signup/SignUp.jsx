@@ -43,7 +43,7 @@ const SignUp = () => {
     setLoading(true);
     try {
       const payload = { username, firstname, lastname, email, password };
-      const res = await axios.post("http://localhost:2020/newUser", payload);
+      const res = await axios.post("https://herodha-backend.onrender.com/newUser", payload);
 
       if (res.status === 201 || res.status === 200) {
         setSuccess("Account created successfully!");

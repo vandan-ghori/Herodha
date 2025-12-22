@@ -40,7 +40,8 @@ const Summary = () => {
 
   const fetchHoldings = async () => {
     try {
-      const res = await axios.get("https://herodha-backend.onrender.com/allHoldings");
+      const user = JSON.parse(localStorage.getItem("user")); 
+      const res = await axios.get(`https://herodha-backend.onrender.com/allHoldings/${user._id}`);
       setAllHoldings(res.data);
     } catch (err) {
       console.error("Holdings fetch failed", err);

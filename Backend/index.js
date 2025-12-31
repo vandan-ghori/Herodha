@@ -15,7 +15,7 @@ const url = process.env.MONGO_URL;
 const app = express();
 app.use(
   cors({
-    origin: ["http://localhost:5174", "https://herodha-frontend.onrender.com"],
+    origin: ["http://localhost:5174", "http://localhost:5173", "https://herodha-frontend.onrender.com"],
     methods: ["GET", "POST", "PUT", "DELETE"],
     credentials: true, 
   })

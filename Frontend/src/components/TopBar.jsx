@@ -39,8 +39,8 @@ const TopBar = () => {
   };
 
   return (
-    <div className="flex h-15 items-center px-8 border-b border-gray-500 shadow-sm">
-      <div className="flex w-[35%] gap-10 border-r border-gray-200">
+    <div className="flex h-15 items-center px-5 border-b border-gray-500 shadow-sm">
+      <div className="flex w-[35%] gap-6 border-r border-gray-200">
         {indices && (
           <>
             {renderIndex("NIFTY", indices.nifty)}

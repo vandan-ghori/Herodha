@@ -43,7 +43,7 @@ const Dashboard = () => {
       <div className='flex-1 w-full md:w-[67%] overflow-y-auto relative bg-gray-50'>
          <button 
             onClick={() => setIsWatchlistOpen(!isWatchlistOpen)}
-            className="md:hidden cursor-pointer fixed bottom-6 right-6 z-40 bg-blue-600 text-white p-4 rounded-full shadow-lg flex items-center justify-center font-bold"
+            className="md:hidden cursor-pointer fixed bottom-10 right-[40%] z-40 bg-blue-600 text-white p-4 rounded-full shadow-lg flex items-center justify-center font-bold"
             aria-label="Open Watchlist"
          >
             Stocks

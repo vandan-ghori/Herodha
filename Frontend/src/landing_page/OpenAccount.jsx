@@ -16,7 +16,7 @@ const OpenAccount = () => {
       </p>
     
       <button 
-        onClick={() => {navgation("/signup"); window.scrollTo({top: 0, behavior: 'smooth'})}}  
+        onClick={() => {navgation("/signup"); window.scrollTo({top: 0, behavior: 'smooth'})}} 
         className='cursor-pointer hover:scale-95 mt-8 md:mt-10 py-3 px-10 w-full sm:w-auto md:min-w-[200px] text-xl font-medium transition-all duration-300 hover:bg-black border-none rounded-md bg-[#387ed1] text-white shadow-lg active:scale-95'
       >
         Sign up for free

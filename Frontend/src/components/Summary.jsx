@@ -41,11 +41,7 @@ const Summary = () => {
   const fetchHoldings = async () => {
     try {
       const user = JSON.parse(localStorage.getItem("user")); 
-<<<<<<< HEAD
       const res = await axios.get(`${import.meta.env.VITE_API_URL || "http://localhost:2020"}/allHoldings`, { withCredentials: true });
-=======
-      const res = await axios.get(`https://herodha-backend.onrender.com/allHoldings/${user._id}`);
->>>>>>> 1ac783556843594977aad118a58b19e450ad4b6f
       setAllHoldings(res.data);
     } catch (err) {
       console.error("Holdings fetch failed", err);

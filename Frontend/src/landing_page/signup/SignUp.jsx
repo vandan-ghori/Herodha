@@ -43,7 +43,7 @@ const SignUp = () => {
     setLoading(true);
     try {
       const payload = { username, firstname, lastname, email, password };
-      const res = await axios.post(`${import.meta.env.VITE_API_URL || "http://localhost:2020"}/signup`, payload, {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL || "https://herodha-backend.onrender.com"}/signup`, payload, {
         withCredentials: true
       });
 

@@ -25,7 +25,7 @@ const Login = () => {
 
     setLoading(true);
     try {
-      const res = await axios.post(`${import.meta.env.VITE_API_URL || "http://localhost:2020"}/login`, {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL || "https://herodha-backend.onrender.com"}/login`, {
         username,
         password,
       }, {

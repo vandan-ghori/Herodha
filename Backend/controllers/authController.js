@@ -28,6 +28,8 @@ module.exports.Signup = async (req, res, next) => {
     res.cookie("token", token, {
       withCredentials: true,
       httpOnly: false,
+      sameSite: "None",
+      secure: true,
     });
     res
       .status(201)
@@ -55,6 +57,8 @@ module.exports.Login = async (req, res, next) => {
      res.cookie("token", token, {
        withCredentials: true,
        httpOnly: false,
+       sameSite: "None",
+       secure: true,
      });
      res.status(200).json({ message: "User logged in successfully", success: true, user: { _id: user._id, username: user.username, email: user.email }});
   } catch (error) {

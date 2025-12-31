@@ -53,7 +53,7 @@ const Navbar = () => {
       
           <div className='relative ml-4' ref={desktopMenuRef}>
             <button onClick={() => setList(!list)} className='focus:outline-none'>
-              <img className='h-6 w-6 opacity-60 hover:opacity-100 transition-opacity' src="images/menu-line.png" alt="Account Menu" />
+              <img className='h-6 w-6 cursor-pointer opacity-60 hover:opacity-100 transition-opacity' src="images/menu-line.png" alt="Account Menu" />
             </button>
             {list && (
               <div className='absolute right-0 top-full mt-4 w-48 bg-white border border-gray-100 rounded shadow-xl py-2 animate-in fade-in zoom-in-95 duration-200'>

@@ -1,10 +1,11 @@
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const Navbar = () => {
   const [list, setList] = useState(false);
   const navigation = useNavigate(); 
-  const menuRef = React.useRef(null);
+  const menuRef = useRef(null);
+  const desktopMenuRef = useRef(null);
 
   const handleNavigate = (path) => {
     navigation(path);
@@ -12,9 +13,12 @@ const Navbar = () => {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
-  React.useEffect(() => {
+  useEffect(() => {
     const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
+      const isInsideMobile = menuRef.current && menuRef.current.contains(event.target);
+      const isInsideDesktop = desktopMenuRef.current && desktopMenuRef.current.contains(event.target);
+
+      if (!isInsideMobile && !isInsideDesktop) {
         setList(false);
       }
     };
@@ -47,7 +51,7 @@ const Navbar = () => {
           <h3 onClick={() => handleNavigate("/pricing")} className='hover:text-blue-600 cursor-pointer transition-all hover:translate-y-[-1px]'>Pricing</h3>
           <h3 onClick={() => handleNavigate("/support")} className='hover:text-blue-600 cursor-pointer transition-all hover:translate-y-[-1px]'>Support</h3>
       
-          <div className='relative ml-4'>
+          <div className='relative ml-4' ref={desktopMenuRef}>
             <button onClick={() => setList(!list)} className='focus:outline-none'>
               <img className='h-6 w-6 opacity-60 hover:opacity-100 transition-opacity' src="images/menu-line.png" alt="Account Menu" />
             </button>

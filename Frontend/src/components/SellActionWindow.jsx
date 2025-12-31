@@ -14,15 +14,14 @@ const SellActionWindow = ({uid,symbol, price}) => {
     const user = JSON.parse(localStorage.getItem("user"));
 
     const handleSellClick = () => {
-        axios.post("https://herodha-backend.onrender.com/newOrder", {
-        userId: user._id,
+        axios.post(`${import.meta.env.VITE_API_URL || "http://localhost:2020"}/newOrder`, {
         name: uid,
         symbol,
         qty: stockQuantity,
         price: stockPrice,
         mode: "SELL",
         total: totalPrice,
-        });
+        }, { withCredentials: true });
 
         SellGeneralContext.closeSellWindow();
     };
@@ -61,7 +60,6 @@ const SellActionWindow = ({uid,symbol, price}) => {
     
           <div className="buttons">
             <div className="flex flex-col gap-5">
-              <span>Margin required ₹140.65</span>
               <span>Total Price: ₹{(stockPrice*stockQuantity).toFixed(2)}</span>
             </div>
             <div>

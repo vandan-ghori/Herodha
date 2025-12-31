@@ -7,9 +7,6 @@ import AboutPage from './landing_page/about/AboutPage'
 import ProductPage from './landing_page/products/ProductPage'
 import PricingPage from './landing_page/pricing/PricingPage'
 import Login from './landing_page/login/login'
-import Navbar from './landing_page/Navbar'
-import Footer from './landing_page/Footer'
-import NotFound from './landing_page/NotFound'
 import Dashboard from './components/Home';
 import ProtectedRoute from './landing_page/context/ProtectedRoute'
 

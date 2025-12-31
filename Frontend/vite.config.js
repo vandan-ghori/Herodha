@@ -15,5 +15,11 @@ export default defineConfig({
     fs: {
       allow: [path.resolve(__dirname, '..')]
     }
+  },
+  test: {
+    globals: true,
+    environment: 'jsdom',
+    setupFiles: './src/setupTests.js',
+    css: true,
   }
 });

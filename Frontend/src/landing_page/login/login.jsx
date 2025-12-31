@@ -25,12 +25,14 @@ const Login = () => {
 
     setLoading(true);
     try {
-      const res = await axios.post("https://herodha-backend.onrender.com/login", {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL || "http://localhost:2020"}/login`, {
         username,
         password,
+      }, {
+        withCredentials: true
       });
 
-      if (res.status === 200) {
+      if (res.status === 200 || res.status === 201) {
         login(res.data);    
         navigate("/summary");
       }

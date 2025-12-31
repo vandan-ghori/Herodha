@@ -6,11 +6,19 @@ import Footer from '../Footer'
 
 const AboutPage = () => {
   return (
-    <div>
+    <div className="min-h-screen bg-white selection:bg-blue-100">
       <Navbar />
-        <Hero />
-        <Team />
-        <Footer />
+      <main className="pt-20 md:pt-28 overflow-x-hidden">
+        <section className="animate-in fade-in duration-700">
+          <Hero />
+        </section>
+        <section className="bg-white py-10 md:py-20 border-t border-gray-50">
+          <Team />
+        </section>
+
+      </main>
+
+      <Footer />
     </div>
   )
 }

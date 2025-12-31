@@ -25,8 +25,9 @@ const AddFundsWindow = () => {
       }
 
       await axios.post(
-        `https://herodha-backend.onrender.com/funds/add/${user._id}`,
-        { amount: Number(amount) }
+        `${import.meta.env.VITE_API_URL || "http://localhost:2020"}/funds/add`,
+        { amount: Number(amount) },
+        { withCredentials: true }
       );
 
       closeAddFundsWindow();

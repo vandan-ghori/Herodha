@@ -10,15 +10,14 @@ const BuyActionWindow = ({ uid, symbol, price }) => {
   const user = JSON.parse(localStorage.getItem("user"));
 
   const handleBuyClick = async () => {
-    await axios.post("https://herodha-backend.onrender.com/newOrder", {
-      userId: user._id,
+    await axios.post(`${import.meta.env.VITE_API_URL || "http://localhost:2020"}/newOrder`, {
       name: uid,
       symbol,
       qty: Number(stockQuantity),
       price: Number(stockPrice),
       mode: "BUY",
       total: Number(stockPrice * stockQuantity),
-    });
+    }, { withCredentials: true });
 
     generalContext.closeBuyWindow();
   };

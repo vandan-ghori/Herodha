@@ -25,7 +25,7 @@ const Summary = () => {
   const fetchFunds = async () => {
     try {
       const user = JSON.parse(localStorage.getItem("user")); 
-      const res = await axios.get(`https://herodha-backend.onrender.com/funds/${user._id}`);
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || "http://localhost:2020"}/funds`, { withCredentials: true });
       setFunds(res.data);
     } catch (err) {
       console.error("Funds fetch failed");
@@ -40,7 +40,8 @@ const Summary = () => {
 
   const fetchHoldings = async () => {
     try {
-      const res = await axios.get("https://herodha-backend.onrender.com/allHoldings");
+      const user = JSON.parse(localStorage.getItem("user")); 
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || "http://localhost:2020"}/allHoldings`, { withCredentials: true });
       setAllHoldings(res.data);
     } catch (err) {
       console.error("Holdings fetch failed", err);
@@ -53,9 +54,9 @@ const Summary = () => {
     try {
       const symbols = allHoldings.map((s) => s.symbol);
 
-      const res = await axios.post("https://herodha-backend.onrender.com/api/prices", {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL || "http://localhost:2020"}/api/prices`, {
         symbols,
-      });
+      }, { withCredentials: true });
 
       const priceMap = {};
       res.data.forEach((p) => {
@@ -105,55 +106,62 @@ const Summary = () => {
   const pnlClass = totalPL >= 0 ? "text-green-500" : "text-red-500";
 
   return (
-    <div className='bg-gray-100 p-30 h-full w-full mr-65'>
-      <h1 className='text-3xl p-4'>Hi, User</h1>
-      <hr />
+    <div className='bg-gray-50 p-4 md:p-10 h-full w-full'>
+      <h1 className='text-3xl font-light mb-6'>Hi, User</h1>
+      <hr className='border-gray-200' />
+      
       {funds && (
-        <div className="p-4 flex flex-col gap-5">
-          <h1 className="text-xl">Equity</h1>
+        <div className="py-6 flex flex-col gap-6">
+          <h1 className="text-xl font-medium text-gray-700">Equity</h1>
 
-          <div className="flex gap-30">
-            <div className="p-3 flex flex-col gap-2">
-              <h1 className="text-5xl text-green-600">
+          <div className="flex flex-col lg:flex-row gap-8 lg:gap-16">
+            <div className="flex-1 p-4 bg-white rounded-lg shadow-sm border border-gray-100 flex flex-col gap-2 justify-center">
+              <h1 className="text-4xl lg:text-5xl font-bold text-green-600">
                 ₹{formatNumber(funds.availableMargin)}
               </h1>
-              <p className="text-gray-600">Margin Available</p>
+              <p className="text-gray-500 text-sm font-medium">Margin Available</p>
             </div>
 
-            <hr />
+            <div className="hidden lg:block w-px bg-gray-300"></div>
 
-            <div className="p-2 flex flex-col gap-2">
-              <p>
-                Margin Used{" "}
-                <span className="font-medium">
-                  ₹{formatNumber(funds.usedMargin)}
-                </span>
-              </p>
-              <p>
-                Opening Balance{" "}
-                <span className="font-medium">
-                  ₹{formatNumber(funds.openingBalance)}
-                </span>
-              </p>
+            <div className="flex-1 flex flex-col gap-4 justify-center">
+              <div className="flex justify-between items-center p-3 bg-white rounded shadow-sm border border-gray-100">
+                <p className="text-gray-600">Margin Used</p>
+                <span className="font-semibold text-lg">₹{formatNumber(funds.usedMargin)}</span>
+              </div>
+              <div className="flex justify-between items-center p-3 bg-white rounded shadow-sm border border-gray-100">
+                <p className="text-gray-600">Opening Balance</p>
+                <span className="font-semibold text-lg">₹{formatNumber(funds.openingBalance)}</span>
+              </div>
             </div>
           </div>
         </div>
       )}
 
 
-      <hr />
+      <hr className='border-gray-200' />
 
-      <div className='p-4 flex flex-col gap-5'>
-        <h1 className='text-xl'>Holdings</h1>
-        <div className='flex gap-30'>
-          <div className='p-3 flex flex-col gap-2'>
-            <h1 className={`text-5xl ${pnlClass}`}>{formatNumber(totalPL)}</h1>
-            <p className='text-gray-600'>P&L</p>
+      <div className='py-6 flex flex-col gap-6'>
+        <h1 className='text-xl font-medium text-gray-700'>Holdings</h1>
+        
+        <div className='flex flex-col lg:flex-row gap-8 lg:gap-16'>
+          <div className='flex-1 p-4 bg-white rounded-lg shadow-sm border border-gray-100 flex flex-col gap-2 justify-center'>
+             <h1 className={`text-4xl lg:text-5xl font-bold ${pnlClass}`}>
+               {formatNumber(totalPL)} <span className="text-sm text-gray-400 font-normal">(P&L)</span>
+             </h1>
           </div>
-          <hr />
-          <div className='p-2 ml-5 flex flex-col gap-2'>
-            <p>Current Value{" "}<span>{formatNumber(currentValue)}</span></p>
-            <p>Investment{" "}<span>{formatNumber(totalInvestment)}</span></p>
+          
+          <div className="hidden lg:block w-px bg-gray-300"></div>
+
+          <div className='flex-1 flex flex-col gap-4 justify-center'>
+            <div className="flex justify-between items-center p-3 bg-white rounded shadow-sm border border-gray-100">
+               <p className="text-gray-600">Current Value</p>
+               <span className="font-semibold text-lg">{formatNumber(currentValue)}</span>
+            </div>
+            <div className="flex justify-between items-center p-3 bg-white rounded shadow-sm border border-gray-100">
+               <p className="text-gray-600">Investment</p>
+               <span className="font-semibold text-lg">{formatNumber(totalInvestment)}</span>
+            </div>
           </div>
         </div>
       </div>

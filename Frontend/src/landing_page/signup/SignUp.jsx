@@ -43,7 +43,9 @@ const SignUp = () => {
     setLoading(true);
     try {
       const payload = { username, firstname, lastname, email, password };
-      const res = await axios.post("https://herodha-backend.onrender.com/newUser", payload);
+      const res = await axios.post(`${import.meta.env.VITE_API_URL || "http://localhost:2020"}/signup`, payload, {
+        withCredentials: true
+      });
 
       if (res.status === 201 || res.status === 200) {
         setSuccess("Account created successfully!");
@@ -52,6 +54,9 @@ const SignUp = () => {
         setLastname("");
         setEmail("");
         setPassword("");
+        setTimeout(() => {
+          navigation("/login");
+        }, 2000);
       } else {
         setError(res.data?.message || "Unexpected response from server");
       }
@@ -176,7 +181,6 @@ const SignUp = () => {
                     : "bg-blue-600 hover:bg-blue-700 text-white"
                 }`}
                 disabled={loading}
-                onClick={() => navigation("/summary")}
               >
                 {loading ? "Creating account..." : "Create Account"}
               </button>

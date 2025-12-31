@@ -28,9 +28,9 @@ const WatchList = () => {
   const fetchPrices = async () => {
     try {
       const symbols = watchlist.map((s) => s.symbol);
-      const res = await axios.post("https://herodha-backend.onrender.com/api/prices", {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL || "http://localhost:2020"}/api/prices`, {
         symbols,
-      });
+      }, { withCredentials: true });
       setPrices((prev) => {
         const updated = { ...prev };
 
@@ -55,15 +55,15 @@ const WatchList = () => {
   }, []);
 
   return (
-    <div className="border relative border-gray-300 bg-white rounded-lg h-[93vh] hide-scrollbar overflow-y-auto ml-10 w-[27.4%]">
-      <div className="flex items-center border-b border-gray-300 p-2 gap-0">
+    <div className="border md:border-r-0 md:border md:rounded-lg border-zinc-500 bg-white h-full w-100 flex flex-col overflow-hidden">
+      <div className="flex items-center border-b border-gray-200 p-3 justify-between bg-gray-50 flex-shrink-0">
         <input
-          className="w-[85%] px-2 py-1 focus:outline-none text-sm"
+          className="w-full px-2 py-1 focus:outline-none text-sm"
           placeholder="Search eg: BPCL, Grasim, TCS..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
         />
-        <span className="text-xs px-2 text-gray-500">
+        <span className="text-xs w-20 text-gray-500">
           {filteredWatchlist.length} / {watchlist.length}
         </span>
       </div>
@@ -74,7 +74,7 @@ const WatchList = () => {
         </div>
       )}
 
-      <ul className="m-2 space-y-1">
+      <ul className="flex-1 overflow-y-auto p-2 space-y-1 scrollbar-thin scrollbar-thumb-gray-300">
         {filteredWatchlist.map((stock, idx) => {
           const priceObj = prices[stock.symbol] || {};
           return (

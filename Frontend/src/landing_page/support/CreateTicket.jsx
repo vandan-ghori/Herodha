@@ -1,111 +1,53 @@
 import React, { useState } from 'react'
 
 const CreateTicket = () => {
-  const [open, setOpen] = useState(false)
-  const [open1, setOpen1] = useState(false)
-  const [open2, setOpen2] = useState(false)
-  const [open3, setOpen3] = useState(false)
-  const [open4, setOpen4] = useState(false)
-  const [open5, setOpen5] = useState(false)
+  const [openStates, setOpenStates] = useState([false, false, false, false, false, false]);
+
+  const toggle = (index) => {
+    const newStates = [...openStates];
+    newStates[index] = !newStates[index];
+    setOpenStates(newStates);
+  };
+
+  const categories = [
+    { title: "Account Opening", links: ["Resident Individual", "Minor", "Non Resident Indian (NRI)", "Company, Partnership, HUF and LLP", "Glossary"] },
+    { title: "Your Herodha Account", links: ["Your Profile", "Account Modification", "CMR and DP", "Nomination", "Transfer and Conversion"] },
+    { title: "Kite", links: ["IPO", "Trading FAQs", "MTF and Margins", "Charts and Orders", "Alerts and Nudges", "General"] },
+    { title: "Funds", links: ["Add money", "Withdraw money", "Add Bank Accounts", "eMandates"] },
+    { title: "Console", links: ["Portfolio", "Corporate Actions", "Funds Statement", "Reports", "Segments"] },
+    { title: "Coin", links: ["Mutual Funds", "NPS", "Features on Coin", "Payments and Orders", "General"] }
+  ];
 
   return (
-    <div className='flex flex-col gap-10 mr-35 ml-35 p-10 '>
-      <div className='w-full flex flex-col'>
-        <button onClick={() => setOpen(!open)} className='hover:scale-101 border cursor-pointer flex gap-4'>
-          <img className='w-16 p-4 bg-[#8abaf572]' src="images/add-circle-line.png" alt="" />
-          <h1 className='text-2xl p-4'>Account Opening</h1>
-        </button>
+    <div className='flex flex-col gap-6 md:gap-10 max-w-6xl mx-auto p-6 md:p-10'>
+      
+      <h2 className="text-xl md:text-2xl text-gray-600 mb-2">To create a ticket, select a relevant topic</h2>
 
-      {open && (
-        <div className='p-10 border border-t-0'>
-          <ul className='list-disc pl-5 flex flex-col gap-2 text-[#387ED1]'>
-            <li className='cursor-pointer hover:text-black w-fit'>Resident Individual</li>
-            <li className='cursor-pointer hover:text-black w-fit'>Minor</li>
-            <li className='cursor-pointer hover:text-black w-fit'>Non Resident Indian (NRI)</li>
-            <li className='cursor-pointer hover:text-black w-fit'>Comapny, Partnership, HUP and LLP</li>
-            <li className='cursor-pointer hover:text-black w-fit'>Glossary</li>
-          </ul>
+      {categories.map((cat, index) => (
+        <div key={index} className='w-full flex flex-col'>
+          <button 
+            onClick={() => toggle(index)} 
+            className='hover:bg-gray-50 border cursor-pointer flex items-center gap-4 transition-all'
+          >
+            <img 
+              className='w-12 md:w-16 p-3 md:p-4 bg-[#8abaf572]' 
+              src="images/add-circle-line.png" 
+              alt="" 
+            />
+            <h1 className='text-lg md:text-2xl p-2 md:p-4 font-normal'>{cat.title}</h1>
+          </button>
+
+          {openStates[index] && (
+            <div className='p-6 md:p-10 border border-t-0 animate-in fade-in slide-in-from-top-1'>
+              <ul className='list-disc pl-5 flex flex-col gap-2 text-[#387ED1]'>
+                {cat.links.map((link, i) => (
+                  <li key={i} className='cursor-pointer hover:text-black w-fit'>{link}</li>
+                ))}
+              </ul>
+            </div>
+          )}
         </div>
-      )}
-      </div>
-
-      <div className='w-full flex flex-col'>
-        <button onClick={() => setOpen1(!open1)} className='hover:scale-101 border cursor-pointer flex gap-4'>
-          <img className='w-16 p-4 bg-[#8abaf572]' src="images/add-circle-line.png" alt="" />
-          <h1 className='text-2xl p-4'>Your Herodha Account</h1>
-        </button>
-
-      {open1 && (
-        <div className='p-10 border border-t-0'>
-          <ul className='list-disc pl-5 flex flex-col gap-2 text-[#387ED1]'>
-            <li className='cursor-pointer hover:text-black w-fit'>Your Profile</li>
-            <li className='cursor-pointer hover:text-black w-fit'>Account Modification</li>
-            <li className='cursor-pointer hover:text-black w-fit'>CMR and DP</li>
-            <li className='cursor-pointer hover:text-black w-fit'>Nomination</li>
-            <li className='cursor-pointer hover:text-black w-fit'>Transfer and Conversion of Securities</li>
-          </ul>
-        </div>
-      )}
-      </div>
-
-      <div className='w-full flex flex-col'>
-        <button onClick={() => setOpen2(!open2)} className='hover:scale-101 border cursor-pointer flex gap-4'>
-          <img className='w-16 p-4 bg-[#8abaf572]' src="images/add-circle-line.png" alt="" />
-          <h1 className='text-2xl p-4'>Kite</h1>
-        </button>
-
-      {open2 && (
-        <div  className='p-10 border border-t-0'>
-          <ul className='list-disc pl-5 flex flex-col gap-2 text-[#387ED1]'>
-            <li className='cursor-pointer hover:text-black w-fit'>IPO</li>
-            <li className='cursor-pointer hover:text-black w-fit'>Trading FAQs</li>
-            <li className='cursor-pointer hover:text-black w-fit'>Margin Trading Facility (MTF) and Margins</li>
-            <li className='cursor-pointer hover:text-black w-fit'>Charts and Orders</li>
-            <li className='cursor-pointer hover:text-black w-fit'>Alerts and Nudges</li>
-            <li className='cursor-pointer hover:text-black w-fit'>General</li>
-          </ul>
-        </div>
-      )}
-      </div>
-
-      <div className='w-full flex flex-col'>
-        <button onClick={() => setOpen3(!open3)} className='hover:scale-101 border cursor-pointer flex gap-4'>
-          <img className='w-16 p-4 bg-[#8abaf572]' src="images/add-circle-line.png" alt="" />
-          <h1 className='text-2xl p-4'>Funds</h1>
-        </button>
-
-      {open3 && (
-        <div className='p-10 border border-t-0'>
-          <ul className='list-disc pl-5 flex flex-col gap-2 text-[#387ED1]'>
-            <li className='cursor-pointer hover:text-black w-fit'>Add money</li>
-            <li className='cursor-pointer hover:text-black w-fit'>Withdraw money</li>
-            <li className='cursor-pointer hover:text-black w-fit'>Add Bank Accounts</li>
-            <li className='cursor-pointer hover:text-black w-fit'>Charts and Orders</li>
-            <li className='cursor-pointer hover:text-black w-fit'>eMandates</li>
-          </ul>
-        </div>
-      )}
-      </div>
-
-      <div className='w-full flex flex-col'>
-        <button onClick={() => setOpen4(!open4)} className='hover:scale-101 border cursor-pointer flex gap-4'>
-          <img className='w-16 p-4 bg-[#8abaf572]' src="images/add-circle-line.png" alt="" />
-          <h1 className='text-2xl p-4'>Console</h1>
-        </button>
-
-      {open4 && (
-        <div className='p-10 border border-t-0'>
-          <ul className='list-disc pl-5 flex flex-col gap-2 text-[#387ED1]'>
-            <li className='cursor-pointer hover:text-black w-fit'>Portfolio</li>
-            <li className='cursor-pointer hover:text-black w-fit'>Corporate Actions</li>
-            <li className='cursor-pointer hover:text-black w-fit'>Funds Statement</li>
-            <li className='cursor-pointer hover:text-black w-fit'>Reports</li>
-            <li className='cursor-pointer hover:text-black w-fit'>Profile</li>
-            <li className='cursor-pointer hover:text-black w-fit'>Segments</li>
-          </ul>
-        </div>
-      )}
-      </div>
+      ))}
     </div>
   )
 }

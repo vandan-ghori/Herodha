@@ -66,7 +66,7 @@ const Navbar = () => {
 
         <div className='lg:hidden relative' ref={menuRef}>
           <button onClick={() => setList(!list)} className='p-2 focus:outline-none'>
-            <img className='h-6 w-6' src="images/menu-line.png" alt="Menu" />
+            <img className='h-6 w-6 cursor-pointer' src="images/menu-line.png" alt="Menu" />
           </button>
           
           {list && (

@@ -16,7 +16,7 @@ const Funds = () => {
       if (!user) return;
 
       const res = await axios.get(
-        `${import.meta.env.VITE_API_URL || "http://localhost:2020"}/funds`,
+        `${import.meta.env.VITE_API_URL || "https://herodha-backend.onrender.com"}/funds`,
         { withCredentials: true }
       );
 

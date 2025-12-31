@@ -28,7 +28,7 @@ const WatchList = () => {
   const fetchPrices = async () => {
     try {
       const symbols = watchlist.map((s) => s.symbol);
-      const res = await axios.post(`${import.meta.env.VITE_API_URL || "http://localhost:2020"}/api/prices`, {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL || "https://herodha-backend.onrender.com"}/api/prices`, {
         symbols,
       }, { withCredentials: true });
       setPrices((prev) => {

@@ -25,7 +25,7 @@ const Summary = () => {
   const fetchFunds = async () => {
     try {
       const user = JSON.parse(localStorage.getItem("user")); 
-      const res = await axios.get(`${import.meta.env.VITE_API_URL || "http://localhost:2020"}/funds`, { withCredentials: true });
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || "https://herodha-backend.onrender.com"}/funds`, { withCredentials: true });
       setFunds(res.data);
     } catch (err) {
       console.error("Funds fetch failed");
@@ -41,7 +41,7 @@ const Summary = () => {
   const fetchHoldings = async () => {
     try {
       const user = JSON.parse(localStorage.getItem("user")); 
-      const res = await axios.get(`${import.meta.env.VITE_API_URL || "http://localhost:2020"}/allHoldings`, { withCredentials: true });
+      const res = await axios.get(`${import.meta.env.VITE_API_URL || "https://herodha-backend.onrender.com"}/allHoldings`, { withCredentials: true });
       setAllHoldings(res.data);
     } catch (err) {
       console.error("Holdings fetch failed", err);
@@ -54,7 +54,7 @@ const Summary = () => {
     try {
       const symbols = allHoldings.map((s) => s.symbol);
 
-      const res = await axios.post(`${import.meta.env.VITE_API_URL || "http://localhost:2020"}/api/prices`, {
+      const res = await axios.post(`${import.meta.env.VITE_API_URL || "https://herodha-backend.onrender.com"}/api/prices`, {
         symbols,
       }, { withCredentials: true });
 

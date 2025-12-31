@@ -107,7 +107,7 @@ const Summary = () => {
 
   return (
     <div className='bg-gray-50 p-4 md:p-10 h-full w-full'>
-      <h1 className='text-3xl font-light mb-6'>Hi, User</h1>
+      <h1 className='text-3xl font-light mb-6'>Hi, {user.user.username}</h1>
       <hr className='border-gray-200' />
       
       {funds && (

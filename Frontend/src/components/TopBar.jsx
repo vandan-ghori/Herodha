@@ -28,7 +28,7 @@ const TopBar = () => {
     const color = isUp ? "text-green-600" : "text-red-500";
 
     return (
-      <div className="flex gap-3 items-center">
+      <div className="flex gap-2 items-center">
         <p className="font-medium">{label}</p>
         <p className={color}>{data.price.toFixed(2)}</p>
         <p className={color}>
@@ -39,11 +39,11 @@ const TopBar = () => {
   };
 
   return (
-    <div className="flex h-10 items-center border-b border-gray-200 shadow-sm">
-      <div className="flex w-[40%] px-8 gap-10 border-r border-gray-200">
+    <div className="flex h-15 items-center px-8 border-b border-gray-500 shadow-sm">
+      <div className="flex w-[35%] gap-10 border-r border-gray-200">
         {indices && (
           <>
-            {renderIndex("NIFTY 50", indices.nifty)}
+            {renderIndex("NIFTY", indices.nifty)}
             {renderIndex("SENSEX", indices.sensex)} 
           </>
         )}

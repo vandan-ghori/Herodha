@@ -22,13 +22,13 @@ const Pricing = () => {
         </button>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 lg:gap-4 lg:w-2/3">
-        <div className="flex flex-col items-center text-center border border-gray-100 rounded-lg p-8 group hover:bg-gray-50 transition-all duration-300">
+      <div className="grid grid-cols-3 sm:grid-cols-3 gap-2 sm:gap-6 lg:gap-4 lg:w-2/3 mx-auto">
+        <div className="flex flex-col items-center text-center border border-gray-100 rounded-lg p-3 sm:p-8 group hover:bg-gray-50 transition-all duration-300">
           <div className="relative mb-2">
-            <img className="w-20 md:w-24" src="images/pricing-eq.svg" alt="0" />
+            <img className="w-16 sm:w-24" src="images/pricing-eq.svg" alt="0" />
           </div>
           <div className="flex flex-col items-center">
-            <p className="text-sm text-gray-500 leading-tight">
+            <p className="text-[14px] sm:text-sm text-gray-500 leading-tight">
               Free account
               <br />
               opening
@@ -36,28 +36,28 @@ const Pricing = () => {
           </div>
         </div>
 
-        <div className="flex flex-col items-center text-center border border-gray-100 rounded-lg p-8 group hover:bg-gray-50 transition-all duration-300">
+        <div className="flex flex-col items-center text-center border border-gray-100 rounded-lg p-3 sm:p-8 group hover:bg-gray-50 transition-all duration-300">
           <div className="relative mb-2">
-            <img className="w-20 md:w-24" src="images/pricing-eq.svg" alt="0" />
+            <img className="w-16 sm:w-24" src="images/pricing-eq.svg" alt="0" />
           </div>
           <div className="flex flex-col items-center">
-            <p className="text-sm text-gray-500 leading-tight">
+            <p className="text-[14px] sm:text-sm text-gray-500 leading-tight">
               Free equity delivery
               <br />& mutual funds
             </p>
           </div>
         </div>
 
-        <div className="flex flex-col items-center text-center border border-gray-100 rounded-lg p-8 group hover:bg-gray-50 transition-all duration-300">
+        <div className="flex flex-col items-center text-center border border-gray-100 rounded-lg p-3 sm:p-8 group hover:bg-gray-50 transition-all duration-300">
           <div className="relative mb-2">
             <img
-              className="w-20 md:w-24"
+              className="w-16 sm:w-24"
               src="images/other-trades.svg"
               alt="20"
             />
           </div>
           <div className="flex flex-col items-center">
-            <p className="text-sm text-gray-500 leading-tight">
+            <p className="text-[14px] sm:text-sm text-gray-500 leading-tight">
               Intraday and
               <br />
               F&O

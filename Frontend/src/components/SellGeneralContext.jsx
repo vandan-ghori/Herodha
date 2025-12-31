@@ -35,7 +35,7 @@ export const SellGeneralContextProvider = (props) => {
       }}
     >
       {props.children}
-      {isSellWindowOpen && <SellActionWindow uid={selectedStockUID} symbol={selectedStockSymbol} price={selectedStockPrice}/>}
+      {isSellWindowOpen && <SellActionWindow uid={selectedStockUID} symbol={selectedStockSymbol} price={selectedStockPrice} closeSellWindow={handleCloseSellWindow}/>}
     </SellGeneralContext.Provider>
   );
 };

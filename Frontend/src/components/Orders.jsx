@@ -83,13 +83,13 @@ const Orders = () => {
 
                   <td className="p-4 text-right whitespace-nowrap">
                     <button
-                      className="px-3 py-1 bg-green-500 hover:bg-green-600 text-white rounded text-xs font-medium transition"
+                      className="px-3 cursor-pointer py-1 bg-green-500 hover:bg-green-600 text-white rounded text-xs font-medium transition"
                       onClick={() => executeOrder(stock._id)}
                     >
                       Execute
                     </button>
                     <button
-                      className="px-3 py-1 bg-red-500 hover:bg-red-600 text-white rounded text-xs font-medium transition ml-2"
+                      className="px-3 cursor-pointer py-1 bg-red-500 hover:bg-red-600 text-white rounded text-xs font-medium transition ml-2"
                       onClick={() => cancelOrder(stock._id)}
                     >
                       Cancel

@@ -7,8 +7,8 @@ const Team = () => {
         <div className='flex flex-col items-center gap-2 flex-shrink-0'>
             <img 
               className='w-48 h-48 md:w-64 md:h-64 object-cover border-4 border-[#387ED1] rounded-full shadow-lg transition-transform duration-500 hover:scale-105' 
-              src="images/nithin-kamath.jpg" 
-              alt="Nithin Kamath" 
+              src="https://avatars.githubusercontent.com/u/191661898?v=4?s=400" 
+              alt="Vandan Ghori" 
             />
             <h1 className='font-bold text-2xl mt-5 text-gray-800'>Vandan Ghori</h1>
             <p className='text-gray-500 font-medium'>Founder, CEO</p>
@@ -18,7 +18,7 @@ const Team = () => {
             
             <div className='flex flex-col gap-4 text-base md:text-lg text-gray-600 leading-relaxed'>
               <p>
-                Nithin bootstrapped and founded Herodha in 2010 to overcome the hurdles he faced 
+                Vandan bootstrapped and founded Herodha in 2025 to overcome the hurdles he faced 
                 during his decade long stint as a trader. Today, Herodha has changed the landscape 
                 of the Indian broking industry.
               </p>
@@ -26,7 +26,6 @@ const Team = () => {
                 He is a member of the SEBI Secondary Market Advisory Committee (SMAC) and the 
                 Market Data Advisory Committee (MDAC).
               </p>
-              <p>Playing basketball is his zen.</p>
             </div>
 
             <div className='flex flex-wrap justify-center lg:justify-start gap-2 mt-2 font-medium'>

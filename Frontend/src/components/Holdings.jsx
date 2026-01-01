@@ -71,6 +71,7 @@ const Holdings = () => {
     (s, h) => s + Number(h.day),
     0
   );
+  const plClass = dayPL >= 0 ? "text-green-500" : "text-red-500";
 
   const labels = allHoldings.map((subArray) => subArray["name"]);
   const data = {
@@ -107,7 +108,7 @@ const Holdings = () => {
           </div>
           <div className="bg-white p-4 rounded shadow-sm border border-gray-200">
             <h5 className="text-gray-500 text-sm mb-1">Day P&L</h5>
-            <h1 className="text-2xl font-semibold text-green-500">₹{dayPL.toFixed(2)}</h1>
+            <h1 className={`text-2xl font-semibold ${plClass}`}>₹{dayPL.toFixed(2)}</h1>
           </div>
           <div className="bg-white p-4 rounded shadow-sm border border-gray-200">
             <h5 className="text-gray-500 text-sm mb-1">Total P&L</h5>
@@ -153,7 +154,7 @@ const Holdings = () => {
                       {stock.net}
                     </td>
                     <td className={`px-4 py-3 text-right font-medium whitespace-nowrap ${stock.day >= 0 ? 'text-green-600' : 'text-red-600'}`}>
-                      {stock.day}%
+                      {(100 - ((stock.avg.toFixed(2) * 100) / stock.price.toFixed(2))).toFixed(2)}%
                     </td>
                   </tr>
                 );

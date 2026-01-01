@@ -175,7 +175,7 @@ const SignUp = () => {
 
               <button
                 type="submit"
-                className={`w-full py-3 cursor-pointer rounded-lg text-lg font-semibold transition-all ${
+                className={`w-full cursor-pointer py-3 rounded-lg text-lg font-semibold transition-all ${
                   loading
                     ? "bg-blue-400 cursor-wait text-white"
                     : "bg-blue-600 hover:bg-blue-700 text-white"
